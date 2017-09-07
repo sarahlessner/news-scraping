@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Entertainment Buzz</h1>
+    <h2>a Buzzfeed Newsfeed</h2>
+    <h3>Your source for everything you never, ever needed to read</h3>
+    {{!-- <img class="img-responsive" src="/img/burgers.png"> --}}
+
+  </div>
+</div>
+
+      <div class="news-body">
+
+        <ul>
+          {{#each articles}}
+            <div class="row">
+              <div class="col-sm-12 article-box">
+                <li>
+                  <div><img class="articleimg" src="{{this.img}}"></div>
+                  <div class="article-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
+                  <div class="article">{{this.summary}}</div>
+                  <!-- for article comments -->
+                  <button class="btn view-comments" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+                </li>
+              </div>
+            </div>
+
+            <div class="container comment-section">
+
+              <div class="row container-fluid panel-body">
+                <h4>Comments</h4>
+                <ul>
+                  <!-- comments from db will display here with handlebars after I learn how to associate collections-->
+
+                  <form action="/{{this.id}}?_method=DELETE" method="POST">
+
+                    <button type="submit">X</button>
+                  </form>
+                </ul>
+              </div>
+              <!-- post a comment section -->
+              <div class="row container-fluid panel-body">
+                <form class="create-update-form" action="/" method="POST">
+                  <div class="form-group">
+                    <input type="text" class="comment-box" name="name" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
+                  </div>
+                  <button class="btn submitbtn" type="submit">Post</button>
+                </form>
+              </div>
+
+            </div>
+          {{/each}}
+        </ul>
+
+      </div>
+
+
+
+   {{!-- saved?--}}

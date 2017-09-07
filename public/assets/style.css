@@ -45,16 +45,22 @@ hr {
   margin-bottom: 10px
 }
 
-.btn {
+.view-comments {
   float: right;
   background-color: #283038;
   color: lightgray;
   font-size: 30px;
 }
-.btn:hover {
+.view-comments:hover,
+.view-comments:focus {
   color: white;
 }
 
+.submitbtn {
+  float: right;
+  background: #99d3ea;
+  color: #283038;
+}
 
 .news-body {
   clear: both;
@@ -79,7 +85,9 @@ hr {
   border-top: none;
   border-radius: 10px;
   width: 100%;
+
 }
+
 
 .comment-box {
   width: 100%;

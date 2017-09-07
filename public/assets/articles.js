@@ -4,10 +4,8 @@ $(document).ready(function() {
 
   $(".comment-section").hide();
   $(document).on('click', '.view-comments', function() {
-
-    // console.log("yo!");
-    // // $($(this).find($(".news-body")).children()[8]).slideToggle();
-    $($(this).parents().eq(3).children()[1]).slideToggle();
+    // slide toggle the comments associated with each article when the comment button is clicked
+    $($(this).parents().eq(2).children()[1]).slideToggle();
 
   });
 
