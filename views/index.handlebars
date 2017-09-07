@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Tech Buzz</h1>
+    {{!-- <img class="img-responsive" src="/img/burgers.png"> --}}
+
+  </div>
+</div>
+
+
+        <h2>Tech News from Buzzfeed</h2>
+
+          {{#each articles}}
+            <div class="row">
+              <div class="col-sm-12">
+                <li>
+                  <div class="article-name">{{this.photo}}</div>
+                  <div class="article-name">{{this.link}}</div>
+                  <div class="article-name">{{this.article}}</div>
+                  <div class="article-name">{{this.summary}}</div>
+                  <form action="/{{this._id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="true">
+                    <button class="btn" type="submit">Comment</button>
+                  </form>
+                </li>
+              </div>
+            </div>
+            <hr>
+
+          {{/each}}
+        </ul>
+      </div>
+      <hr>
+
+
+   {{!-- saved?--}}
+    <div class="devoured panel panel-default col-sm-5">
+      <div class="page-header">
+        <h2>Bookmarked</h2>
+      </div>
+      <div class="row container-fluid panel-body">
+        <ul>
+          {{#each articles}}
+            {{#if this.saved}}
+              <li>
+                {{this.link}}
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->

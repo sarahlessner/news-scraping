@@ -1,5 +1,5 @@
 var express = require("express");
-var mongojs = require("mongojs");
+var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 
 //for scraping
@@ -16,6 +16,9 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//mongo heroku: mongolab-vertical-89248
+
+//MONGODB_URI: mongodb://heroku_4r7szb14:edc210mrggo2vrlpj7jr1ni8bo@ds129144.mlab.com:29144/heroku_4r7szb14
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
@@ -23,7 +26,6 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./routes/html-routes.js")(app);
 require("./routes/scrape-api-routes.js")(app);
 
 
