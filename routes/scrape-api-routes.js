@@ -31,12 +31,6 @@ module.exports = function(app) {
           // Load the html body from request into cheerio
           var $ = cheerio.load(html);
           var results = [];
-          // For each element with a "title" class
-          // $(".summary-list .summary").each(function(i, element) {
-          //   // Save the text and href of each link enclosed in the current element
-          //   var title = $(element).find("a[title]").text();
-          //   var link = $(element).find("a").attr("href");
-          //   var summary = $(element).find($(".desc")).text();
 
             $(".lede").each(function(i, element) {
               // Save the text and href of each link enclosed in the current element
