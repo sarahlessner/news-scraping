@@ -1,11 +1,12 @@
+
+var request = require("request");
+var cheerio = require("cheerio");
+
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-    var hbsObject = {
-      articles: [1, 2, 3, 4, 5]
 
-    }
-    res.render("index", hbsObject);
+    res.send("hello world");
   });
 
   // Retrieve data from the db
@@ -42,7 +43,8 @@ module.exports = function(app) {
               var title = $(element).find($(".lede__title")).text();
               var link = $(element).children("a").attr("href");
               var summary = $(element).find($(".lede__kicker")).text();
-              var img = $(element).find($(".lede__image")).attr("src");
+              var img = $(element).find($(".bf_dom")).attr("rel:bf_image_src") ||
+              $(element).find($(".lede__image")).attr("src");
         // Save these results in an object that we'll push into the results array we defined earlier
               results.push({
                 title: title,
@@ -54,10 +56,15 @@ module.exports = function(app) {
       //
       // // Log the results once you've looped through each of the elements found with cheerio
       console.log(results);
+      var hbsObject = {
+        articles: results
+      };
+      res.render("index", hbsObject);
+      // res.send(results);
+
     });
 
     // Send a "Scrape Complete" message to the browser
-    res.send("Scrape Complete");
   });
 
 }
