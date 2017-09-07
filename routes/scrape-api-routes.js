@@ -46,12 +46,14 @@ module.exports = function(app) {
               var img = $(element).find($(".bf_dom")).attr("rel:bf_image_src") ||
               $(element).find($(".lede__image")).attr("src");
         // Save these results in an object that we'll push into the results array we defined earlier
+            if (link) {
               results.push({
                 title: title,
-                link: "www.buzzfeed.com"+link,
+                link: "https://www.buzzfeed.com"+link,
                 summary: summary,
                 img: img
               });
+            }
             });
       //
       // // Log the results once you've looped through each of the elements found with cheerio

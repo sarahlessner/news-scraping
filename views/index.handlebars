@@ -8,17 +8,16 @@
   </div>
 </div>
 
-      <div class="row container-fluid panel-body news-body">
+      <div class="news-body">
 
         <ul>
           {{#each articles}}
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-12 article-box">
                 <li>
-                  <div class="article-name"><img class="articleimg" src="{{this.img}}"></div>
-                  <div class="article-name">{{this.title}}</div>
-                  <div class="article-name">{{this.link}}</div>
-                  <div class="article-name">{{this.summary}}</div>
+                  <div class="article"><img class="articleimg" src="{{this.img}}"></div>
+                  <div class="article"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
+                  <div class="article">{{this.summary}}</div>
 
                   <form action="/{{this._id}}?_method=PUT" method="POST">
                     <input type="hidden" name="comment" value="true">
@@ -27,7 +26,7 @@
                 </li>
               </div>
             </div>
-            <hr>
+
           {{/each}}
         </ul>
       </div>
