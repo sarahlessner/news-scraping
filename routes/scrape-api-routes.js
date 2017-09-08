@@ -89,7 +89,7 @@ module.exports = function(app) {
     });
 
     // Send a "Scrape Complete" message to the browser
-    res.send("scrape complete");
+    res.redirect("/");
   });
 
   //

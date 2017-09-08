@@ -7,7 +7,7 @@ $(document).ready(function() {
   });
   //get latest articles on click
   $("#getlatestbtn").on('click', function() {
-  
+    window.location.reload();
 
   });
 
