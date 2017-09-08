@@ -80,14 +80,14 @@ hr {
 }
 
 .comment-section {
+  clear: both;
   margin-top: 5px;
   border: 1px solid gray;
-  border-top: none;
   border-radius: 10px;
-  width: 100%;
+  width: 95%;
+  margin: auto;
 
 }
-
 
 .comment-box {
   width: 100%;
