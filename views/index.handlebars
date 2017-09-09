@@ -1,50 +1,69 @@
-<div class="container">
+<!-- <div class="container">
   <div class="jumbotron">
     <h1 class="text-center">Entertainment Buzz</h1>
     <h2>a Buzzfeed Newsfeed</h2>
     <h3>Your source for everything you never, ever needed to read</h3>
-    <button class="btn" id="getlatestbtn">Get Newest Articles!</button>
+
     {{!-- <img class="img-responsive" src="/img/burgers.png"> --}}
 
   </div>
-</div>
+</div> -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand page-title" href="/">BZZZ Entertainment</a>
+    </div>
 
-      <div class="news-body">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Latest News<span class="sr-only">(current)</span></a></li>
+        <li><a href="/archive">Archive</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-          {{#each articles}}
-            <div class="row">
-              <div class="col-sm-12 article-box">
-                <div><img class="articleimg" src="{{this.img}}"></div>
-                <div class="article-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
-                <div class="article">{{this.summary}}</div>
-                <!-- click to display article comments -->
-                <button class="btn view-comments" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
-              </div>
-              <!-- comment section - hidden by default button above toggles -->
-              <div class="container comment-section">
-                <!-- existing comments -->
-                <div class="row container-fluid panel-body">
-                  <h4>Comments</h4>
-                    <!-- comments from db will display here -->
-                    <button class="btn deletebtn"  type="submit">X</button>
-
-                </div>
-                <!-- comment input/submit -->
-                <div class="row container-fluid panel-body">
-                  <form class="create-update-form">
-                    <div class="form-group">
-                      <input type="text" class="comment-box" name="name" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
-                    </div>
-                    <button class="btn submitbtn" data-id="{{this._id}}" type="submit">Post</button>
-                  </form>
-                </div>
-
-              </div>
+<div class="news-body">
+  {{#each articles}}
+    <div class="row">
+      <div class="col-sm-12 article-box">
+        <div><img class="articleimg" src="{{this.img}}"></div>
+        <div class="article-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
+        <div class="article">{{this.summary}}</div>
+        <!-- click to display article comments -->
+        <button class="btn view-comments" data-id="{{this._id}}" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+      </div>
+      <!-- comment section - hidden by default button above toggles -->
+      <div class="container comment-section">
+        <!-- existing comments -->
+        <div class="row container-fluid panel-body">
+          <h4>Comments</h4>
+            <!-- comments from db will display here -->
+            <button class="btn deletebtn"  type="submit">X</button>
+        </div>
+        <!-- comment input/submit -->
+        <div class="row container-fluid panel-body">
+          <form class="create-update-form">
+            <div class="form-group">
+              <input type="text" class="comment-box" name="name" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
             </div>
-          {{/each}}
-        <!-- </ul> -->
+            <button class="btn submitbtn" data-id="{{this._id}}" type="submit">Post</button>
+          </form>
+        </div>
 
       </div>
+    </div>
+  {{/each}}
+<!-- end news body -->
+</div>
 
 
 

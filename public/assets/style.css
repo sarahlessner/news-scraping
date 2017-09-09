@@ -30,9 +30,17 @@ hr {
   border-color: black;
 }
 
-.jumbotron {
+.navbar,
+.navbar-inverse,
+.navbar-brand,
+.navbar-nav>li>a {
   background: #99d3ea;
-  color: #283038;
+  color: #283038 !important;
+  border: none;
+}
+
+.navbar-nav>li>a:hover {
+  color: white;
 }
 
 .articleimg {

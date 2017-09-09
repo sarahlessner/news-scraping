@@ -15,7 +15,11 @@ $(document).ready(function() {
   $(document).on('click', '.view-comments', function() {
     // slide toggle the comments associated with each article when the comment button is clicked
     $($(this).parents().eq(1).children()[1]).slideToggle();
+    var articleId = $(this).attr("data-id");
+    
+    $.getJSON('/comments', function() {
 
+    });
 
 
   });
