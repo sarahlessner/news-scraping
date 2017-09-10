@@ -8,7 +8,7 @@
         <div class="article-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
         <div class="article">{{this.summary}}</div>
         <!-- click to display article comments -->
-        <button class="btn view-comments" data-id="{{this._id}}" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+        <button class="btn view-comments" data-id="{{this.title}}" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
       </div>
       <!-- comment section - hidden by default button above toggles -->
       <div class="container comment-section">
@@ -24,7 +24,7 @@
             <div class="form-group">
               <input type="text" class="comment-box" name="name" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
             </div>
-            <button class="btn submitbtn" data-id="{{this._id}}" type="submit">Post</button>
+            <button class="btn submitbtn" data-id="{{this.title}}" type="submit">Post</button>
           </form>
         </div>
 

@@ -61,8 +61,6 @@ module.exports = function(app) {
   //archive page - gets all articles from the database, sorts by date :)
   app.get("/archive", function(req, res) {
     Articles.find({}).sort({"createdAt": -1})
-
-
     .exec(function(error, results) {
     // Log any errors
     if (error) {
@@ -84,7 +82,7 @@ module.exports = function(app) {
 
   //post comments
 
-  app.post('/comments/:id', function(req, res){
+  app.post('/comments/:title', function(req, res){
     var comment = new Comments(req.body);
     comment.save(function(error, doc) {
       // Log any errors
@@ -94,7 +92,7 @@ module.exports = function(app) {
       // Otherwise
       else {
         // Use the article id to find and update it's note
-        Articles.findOneAndUpdate({ "_id": req.params.id }, { $push: { "notes": doc._id } }, { new: true },
+        Articles.findOneAndUpdate({ "title": req.params.title }, { $push: { "notes": doc._id } }, { new: true },
         function(err, newdoc) {
         // Send any errors to the browser
         if (err) {
@@ -109,8 +107,8 @@ module.exports = function(app) {
     });
   });
   //display comments
-  app.get('/comments/:id', function(req, res) {
-    Article.findOne({ "_id": req.params.id })
+  app.get('/comments/:title', function(req, res) {
+    Article.findOne({ "title": req.params.title })
     // ..and on top of that, populate the notes (replace the objectIds in the notes array with bona-fide notes)
     .populate("comments")
     // Now, execute the query
