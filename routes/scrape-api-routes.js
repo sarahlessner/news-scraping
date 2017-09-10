@@ -36,11 +36,11 @@ module.exports = function(app) {
               article.save(function(err, doc) {
                 // Log any errors
                 if (err) {
-                  console.log(err);
+                  // console.log(err);
                 }
                 // Or log the doc
                 else {
-                  console.log(doc);
+                  // console.log(doc);
                 }
               });
 
@@ -64,7 +64,7 @@ module.exports = function(app) {
     .exec(function(error, results) {
     // Log any errors
     if (error) {
-      console.log(error);
+      // console.log(error);
     }
     // Or send the doc to the browser as a json object
     else {
@@ -83,16 +83,19 @@ module.exports = function(app) {
   //post comments
 
   app.post('/comments/:title', function(req, res){
+    console.log("req.body from app post comments title YES YES YES", req.body);
     var comment = new Comments(req.body);
     comment.save(function(error, doc) {
       // Log any errors
       if (error) {
-        console.log(error);
+        // console.log(error);
       }
       // Otherwise
       else {
+        console.log("COMMENTS NEW DOC", doc);
         // Use the article id to find and update it's note
-        Articles.findOneAndUpdate({ "title": req.params.title }, { $push: { "notes": doc._id } }, { new: true },
+        // console.log("REQ>PRARAMS>TITLE", req.params.title);
+        Articles.findOneAndUpdate({ "title": req.params.title }, { $push: { "comments": doc._id } }, { new: true },
         function(err, newdoc) {
         // Send any errors to the browser
         if (err) {
@@ -108,7 +111,7 @@ module.exports = function(app) {
   });
   //display comments
   app.get('/comments/:title', function(req, res) {
-    Article.findOne({ "title": req.params.title })
+    Articles.findOne({ "title": req.params.title })
     // ..and on top of that, populate the notes (replace the objectIds in the notes array with bona-fide notes)
     .populate("comments")
     // Now, execute the query

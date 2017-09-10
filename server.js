@@ -23,7 +23,7 @@ mongoose.connect("mongodb://heroku_4r7szb14:edc210mrggo2vrlpj7jr1ni8bo@ds129144.
 // Local Database Configuration with Mongoose
 // mongoose.connect("mongodb://localhost/articlescraper");
 // var db = mongoose.connection;
-//
+// 
 // db.on("error", function(error) {
 //   console.log("Mongoose Error: ", error);
 // });

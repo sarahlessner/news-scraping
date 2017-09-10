@@ -15,14 +15,14 @@
         <!-- existing comments -->
         <div class="row container-fluid panel-body">
           <h4>Comments</h4>
-            <!-- comments from db will display here -->
-            <button class="btn deletebtn"  type="submit">X</button>
+            <div class="existing-comments"></div>
         </div>
         <!-- comment input/submit -->
         <div class="row container-fluid panel-body">
           <form class="create-update-form">
             <div class="form-group">
-              <input type="text" class="comment-box" name="name" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
+              <input type="text" class="name-box" name="name" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'"/>
+              <input type="text" class="comment-box" name="comment" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
             </div>
             <button class="btn submitbtn" data-id="{{this.title}}" type="submit">Post</button>
           </form>
