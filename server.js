@@ -15,23 +15,23 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // mLab database
-mongoose.connect("mongodb://heroku_4r7szb14:edc210mrggo2vrlpj7jr1ni8bo@ds129144.mlab.com:29144/heroku_4r7szb14", function(err) {
-	if(err) throw err;
-	console.log('database connected');
-  });
+// mongoose.connect("mongodb://heroku_4r7szb14:edc210mrggo2vrlpj7jr1ni8bo@ds129144.mlab.com:29144/heroku_4r7szb14", function(err) {
+// 	if(err) throw err;
+// 	console.log('database connected');
+//   });
 
 // Local Database Configuration with Mongoose
-// mongoose.connect("mongodb://localhost/articlescraper");
-// var db = mongoose.connection;
-//
-// db.on("error", function(error) {
-//   console.log("Mongoose Error: ", error);
-// });
-//
-// // Once logged in to the db through mongoose, log a success message
-// db.once("open", function() {
-//   console.log("Mongoose connection successful.");
-// });
+mongoose.connect("mongodb://localhost/articlescraper");
+var db = mongoose.connection;
+
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 
 
 

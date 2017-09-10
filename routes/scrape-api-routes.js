@@ -5,41 +5,7 @@ var Comments = require("./../models/comments.js");
 var Articles = require("./../models/articles.js");
 
 module.exports = function(app) {
-
-  app.get("/archive", function(req, res) {
-    Articles.find({}, function(error, results) {
-    // Log any errors
-    if (error) {
-      console.log(error);
-    }
-    // Or send the doc to the browser as a json object
-    else {
-          var hbsObject = {
-            articles: results
-          };
-          res.render("index", hbsObject);
-    }
-    });
-
-  //app.get end
-  });
-
-  // Retrieve data from the db
-  // app.get("/all", function(req, res) {
-  //   // Find all results from the scrapedData collection in the db
-  //   db.newscrape.find({}, function(error, found) {
-  //     // Throw any errors to the console
-  //     if (error) {
-  //       console.log(error);
-  //     }
-  //     // If there are no errors, send the data to the browser as json
-  //     else {
-  //       res.json(found);
-  //     }
-  //   });
-  // });
-
-  // Scrape data from one site and place it into the mongodb db
+  // Scrape data from buzzfeed and display results direct from scrape on the page load
   app.get("/", function(req, res) {
     // Make a request for the news section of ycombinator
     request("https://www.buzzfeed.com/entertainment", function(error, response, html) {
@@ -92,6 +58,29 @@ module.exports = function(app) {
     });
     // res.redirect("/");
   });
+  //archive page - gets all articles from the database, sorts by date :)
+  app.get("/archive", function(req, res) {
+    Articles.find({}).sort({"createdAt": -1})
+
+
+    .exec(function(error, results) {
+    // Log any errors
+    if (error) {
+      console.log(error);
+    }
+    // Or send the doc to the browser as a json object
+    else {
+          var hbsObject = {
+            articles: results
+          };
+          res.render("index", hbsObject);
+    }
+    });
+
+  //app.get end
+  });
+
+
 
   //post comments
 

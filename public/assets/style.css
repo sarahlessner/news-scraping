@@ -29,6 +29,10 @@ ul {
 hr {
   border-color: black;
 }
+p {
+  margin-left: 15px;
+  margin-top: 15px;
+}
 
 .navbar,
 .navbar-inverse,
@@ -41,6 +45,10 @@ hr {
 
 .navbar-nav>li>a:hover {
   color: white;
+}
+
+.mynav {
+  max-height: 40px;
 }
 
 .articleimg {
