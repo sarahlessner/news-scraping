@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-//on click for viewing comments
-
+  //on click for toggling the comment section per each article
   $(".comment-section").hide();
   $(document).on('click', '.view-comments', function() {
     // $('#existing-comments').empty();
@@ -12,10 +11,10 @@ $(document).ready(function() {
     $($(this).parents().eq(1).children()[1]).slideToggle();
     getComments(articleTitle, $(this));
   });
-
+  //function to get comments - called on initial comment box load and after submitting
   var getComments = function(title, thisbtn) {
-    // $(".comment-text").empty();
 
+    //get comments associated with 'this' article
     $.ajax({
     method: "GET",
     url: "/comments/" + title
@@ -30,18 +29,13 @@ $(document).ready(function() {
         else if (thisbtn.hasClass("submitbtn")) {
           console.log(thisbtn.parents());
           commentsDiv = thisbtn.parents().eq(2).find("span");
-          
-          // console.log("postbtn", thisbtn.data("idnum"));
-          // console.log("submitcomment", );
+
         }
         else {
           console.log("unrecognized button");
         }
         commentsDiv.empty();
-        // console.log("parents", thisbtn.parents().eq(1).find("span"));
-        // console.log("data from getcomments", data.comments);
-        // var commentsDiv = thisbtn.parents().eq(1).find("span");
-        // console.log("commentsDiv", commentsDiv);
+
         var comments = data.comments
         for (i = 0; i < comments.length; i++) {
           $comments = $('<div>')
@@ -108,6 +102,14 @@ $(document).ready(function() {
     $(cbName).val('');
 	});
 
-
+  //selector for navbar links to change background
+  $('.a-latest').on('click', function(){
+    $('.a-archive').removeClass('active-nav');
+    $('a-latest').addClass('active-nav');
+  });
+  $('.a-archive').on('click', function(){
+    $('.a-latest').removeClass('active-nav');
+    $('a-archive').addClass('active-nav');
+  });
 //end doc ready
 });

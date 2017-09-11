@@ -38,11 +38,11 @@ module.exports = function(app) {
               article.save(function(err, doc) {
                 // Log any errors
                 if (err) {
-                  // console.log(err);
+                  return console.log(err);
                 }
                 // Or log the doc
                 else {
-                  // console.log(doc);
+                  console.log(doc);
                 }
               });
 
@@ -72,9 +72,14 @@ module.exports = function(app) {
     }
     // Or send the doc to the browser as a json object
     else {
-          // console.log(results);
-          for(var i = 0; i < results.length; i++)
+          console.log(results.length);
+          for(var i = 0; i < results.length; i++) {
+            if(i%52 === 0) {
+              console.log(results[i]);
+            }
             results[i]["idnum"] = i;
+
+          }
 
           var hbsObject = {
             articles: results
@@ -151,6 +156,7 @@ module.exports = function(app) {
         }
         // Or send the doc to the browser
         else {
+          console.log("doc", doc);
           res.send(doc);
         }
       });

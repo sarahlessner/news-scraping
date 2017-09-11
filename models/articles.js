@@ -5,7 +5,7 @@ var ArticleSchema = new Schema({
 	title: {
 		type: String,
     required: true,
-    unique: true
+		unique: true
 	},
 	link: {
 		type: String,
@@ -18,6 +18,7 @@ var ArticleSchema = new Schema({
   img: {
     type: String,
     required: true
+
   },
 	createdAt: {
 		type: Date,
@@ -29,8 +30,6 @@ var ArticleSchema = new Schema({
     // The ObjectIds will refer to the ids in the Note model
     ref: "Comments"
   }]
-
-
 });
 
 var Articles = mongoose.model("Articles", ArticleSchema);
