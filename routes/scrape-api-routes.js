@@ -64,7 +64,7 @@ module.exports = function(app) {
   });
   //archive page - gets all articles from the database, sorts by date :)
   app.get("/archive", function(req, res) {
-    Articles.find({}).sort({"createdAt": 1})
+    Articles.find({}).sort({"createdAt": -1})
     .exec(function(error, results) {
     // Log any errors
     if (error) {
