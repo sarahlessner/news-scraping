@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-sm-12 article-box">
         <div><img class="articleimg" src="{{this.img}}"></div>
-        <div class="article-title"><a href="{{this.link}}" target="_blank">{{this.title}}</a></div>
+        <div class="article-title"><a href="https://www.buzzfeed.com{{this.link}}" target="_blank">{{this.title}}</a></div>
         <div class="article">{{this.summary}}</div>
         <!-- click to display article comments -->
         <button class="btn view-comments" data-id="{{this.title}}" type="submit"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
@@ -15,16 +15,16 @@
         <!-- existing comments -->
         <div class="row container-fluid panel-body">
           <h4>Comments</h4>
-            <div class="existing-comments"></div>
+          <span id="existing-comments"></span>
         </div>
         <!-- comment input/submit -->
         <div class="row container-fluid panel-body">
           <form class="create-update-form">
             <div class="form-group">
-              <input type="text" class="name-box" name="name" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'"/>
-              <input type="text" class="comment-box" name="comment" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
+              <input type="text" id="name-box{{this.idnum}}" class="name-box" name="name" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'"/>
+              <input type="text" id="comment-box{{this.idnum}}" class="comment-box" name="comment" placeholder="Share your thoughts here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Share your thoughts here'"/>
             </div>
-            <button class="btn submitbtn" data-id="{{this.title}}" type="submit">Post</button>
+            <button class="btn submitbtn" data-id="{{this.title}}" type="submit" data-idnum="{{this.idnum}}">Post</button>
           </form>
         </div>
 
