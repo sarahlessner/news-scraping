@@ -43,12 +43,9 @@ p {
   border: none;
 }
 
-.navbar-inverse .navbar-nav>li>a,
 .navbar-inverse .navbar-nav>li>a:hover,
 .navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:active
-
- {
+.navbar-inverse .navbar-nav>li>a:active {
   background: #3890b7;
 }
 
