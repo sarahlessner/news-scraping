@@ -1,12 +1,19 @@
 body {
   /*background-color: #07030c;*/
-  background-color: #525879;
-  /*background-color: #7f86ad;*/
+  background-color: #616473;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 h1, h2, h3, h4 {
   text-align: center;
-  margin-bottom: 15px
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+h4 {
+  text-decoration: underline;
 }
 
 a {
@@ -40,15 +47,18 @@ p {
 .navbar-inverse,
 .navbar-brand,
 .navbar-nav>li>a {
+  font-family: 'Montserrat', sans-serif;
   background: #99d3ea;
   color: #283038 !important;
   border: none;
+  border-radius: 0;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,
 .navbar-inverse .navbar-nav>li>a:focus,
 .navbar-inverse .navbar-nav>li>a:active {
   background: #3890b7;
+  color: white !important;
 }
 
 
@@ -56,8 +66,21 @@ p {
   max-height: 40px;
 }
 
+.page-title {
+  font-family: 'Marck Script', cursive;
+  font-weight: bold;
+  font-size: 30px;
+}
+
 .active-nav {
   background: #3890b7;
+}
+
+.tagline {
+  float: right;
+  font-style: italic;
+  /*margin-left: 40px;*/
+  font-size: 15px;
 }
 
 .articleimg {
@@ -65,9 +88,19 @@ p {
   float: left;
 }
 
+.article {
+  font-family: helvetica;
+}
+
 .article-title {
   text-decoration: underline;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.article- title,
+a {
+  font-size: 20px;
 }
 
 .view-comments {
@@ -100,7 +133,7 @@ p {
   color: lightgray;
   padding: 10px;
   border: 3px solid #7f86ad;
-  margin-top: 10px;
+  margin-top: 7px;
   border-radius: 10px;
 }
 
@@ -122,14 +155,14 @@ p {
 }
 
 .comment-text {
-  border: 1px solid black;
+  border: 1px solid #9ea3de;
   border-radius: 5px;
-  font-weight: bold;
-  font-family:  sans-serif;
+  font-style: oblique;
   padding: 20px;
   background: white;
   width: 75%;
   margin: auto;
+  margin-top:2px;
 }
 
 .create-update-form {
@@ -149,7 +182,16 @@ p {
 	outline: 0;
 }
 
+.glyphicon-trash {
+  color: #9ea3de;
+}
+
+.glyphicon-trash:hover {
+  color: #283038;
+}
 .remove-button {
+  border: none;
+  float: right;
   background: white !important;
-  margin-right: 0;
+
 }

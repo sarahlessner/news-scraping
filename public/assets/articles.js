@@ -45,10 +45,10 @@ $(document).ready(function() {
             .append(comments[i].comment);
             var $btn = $("<button>");
         		var $span = $("<span>");
-        		$btn.addClass("remove-button btn");
+        		$btn.addClass("remove-button");
         		$btn.attr("data-id", comments[i]._id);
             $btn.attr("data-name", comments[i].title);
-        		$span.addClass("glyphicon glyphicon-minus-sign");
+        		$span.addClass("glyphicon glyphicon-trash");
         		$span.attr("aria-hidden", "true");
         		$btn.append($span);
         		$comments.append($btn);
