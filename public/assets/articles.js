@@ -39,10 +39,15 @@ $(document).ready(function() {
         //if there are comments, display them along with a remove button
         if (comments) {
           for (i = 0; i < comments.length; i++) {
-            $comments = $('<div>')
-            .addClass('comment-text')
-            .append(comments[i].name+": ")
-            .append(comments[i].comment);
+            var $comments = $('<div>')
+            .addClass('comment-text');
+            var $name = $('<div>');
+            var $comment = $('<div>');
+            $name.append(comments[i].name+": ")
+            .addClass('name');
+            $comment.append(comments[i].comment)
+            .addClass('comment');
+            $comments.append($name);
             var $btn = $("<button>");
         		var $span = $("<span>");
         		$btn.addClass("remove-button");
@@ -51,12 +56,12 @@ $(document).ready(function() {
         		$span.addClass("glyphicon glyphicon-trash");
         		$span.attr("aria-hidden", "true");
         		$btn.append($span);
-        		$comments.append($btn);
+            $comment.append($btn);
+        		$comments.append($comment);
             // $('#existing-comments').append($comments);
             commentsDiv.append($comments);
           }
         }
-
         // The title of the article
 
       });
@@ -73,7 +78,7 @@ $(document).ready(function() {
       url: "/comments/delete/" + commentId,
     }).done(function(data) {
         console.log("delete button", thisButton.parent());
-        thisButton.parent().empty().removeClass('comment-text');
+        thisButton.parents().eq(1).empty().removeClass('comment-text');
 
     });
   });

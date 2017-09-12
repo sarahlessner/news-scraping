@@ -14,6 +14,7 @@ h1, h2, h3, h4 {
 
 h4 {
   text-decoration: underline;
+  font-size: 25px;
 }
 
 a {
@@ -106,7 +107,7 @@ a {
 .view-comments {
   float: right;
   background-color: #283038;
-  color: lightgray;
+  color: #7f86ad;
   font-size: 30px;
 }
 .view-comments:hover,
@@ -118,6 +119,11 @@ a {
   float: right;
   background: #99d3ea;
   color: #283038;
+}
+
+.submitbtn:hover {
+  color: white;
+  background: #7f86ad;
 }
 
 .news-body {
@@ -147,11 +153,25 @@ a {
   background: #d5d0de;
 }
 
+.name-box,
+.comment-box {
+  border-style: none;
+  border: 1px solid #9ea3de;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
 .comment-box {
   width: 100%;
   height: 80px;
-  border-radius: 5px;
+}
 
+.name-box:focus,
+.comment-box:focus {
+  border-color: #c5b0f7;
+	box-shadow: 0px 1px 1px rgba(90,102,236, 0.075) inset, 0px 0px 8px rgba(90,102,236, 0.5);
+	outline: 0;
 }
 
 .comment-text {
@@ -171,23 +191,22 @@ a {
   padding-top: 50px;
 }
 
-.name-box {
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-.name-box:focus,
-.comment-box:focus {
-  border-color: #c5b0f7;
-	box-shadow: 0px 1px 1px rgba(90,102,236, 0.075) inset, 0px 0px 8px rgba(90,102,236, 0.5);
-	outline: 0;
+.name {
+  color: #3f51b5;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
+
 .glyphicon-trash {
-  color: #9ea3de;
+  color: #3f51b5;
+  font-size: 20px;
 }
 
 .glyphicon-trash:hover {
-  color: #283038;
+  color: lightblue;
 }
 .remove-button {
   border: none;
