@@ -25,33 +25,36 @@ $(document).ready(function() {
         if(thisbtn.hasClass("view-comments")) {
 
           commentsDiv = thisbtn.parents().eq(1).find("span");
-        }
-        else if (thisbtn.hasClass("submitbtn")) {
-          console.log(thisbtn.parents());
+        } else if (thisbtn.hasClass("submitbtn")) {
+
           commentsDiv = thisbtn.parents().eq(2).find("span");
 
-        }
-        else {
+        } else {
           console.log("unrecognized button");
         }
+        console.log("JPL-commentsDiv", commentsDiv);
         commentsDiv.empty();
 
-        var comments = data.comments
-        for (i = 0; i < comments.length; i++) {
-          $comments = $('<div>')
-          .addClass('comment-text')
-          .append(comments[i].name+": ")
-          .append(comments[i].comment);
-          var $btn = $("<button>");
-      		var $span = $("<span>");
-      		$btn.addClass("remove-button btn");
-      		$btn.attr("data-id", comments[i]._id);
-      		$span.addClass("glyphicon glyphicon-minus-sign");
-      		$span.attr("aria-hidden", "true");
-      		$btn.append($span);
-      		$comments.append($btn);
-          // $('#existing-comments').append($comments);
-          commentsDiv.append($comments);
+        var comments = data.comments;
+        //if there are comments, display them along with a remove button
+        if (comments) {
+          for (i = 0; i < comments.length; i++) {
+            $comments = $('<div>')
+            .addClass('comment-text')
+            .append(comments[i].name+": ")
+            .append(comments[i].comment);
+            var $btn = $("<button>");
+        		var $span = $("<span>");
+        		$btn.addClass("remove-button btn");
+        		$btn.attr("data-id", comments[i]._id);
+            $btn.attr("data-name", comments[i].title);
+        		$span.addClass("glyphicon glyphicon-minus-sign");
+        		$span.attr("aria-hidden", "true");
+        		$btn.append($span);
+        		$comments.append($btn);
+            // $('#existing-comments').append($comments);
+            commentsDiv.append($comments);
+          }
         }
 
         // The title of the article
@@ -62,11 +65,17 @@ $(document).ready(function() {
   //delete comments
   $(document).on('click', '.remove-button', function(){
     var commentId = $(this).data("id");
+    var articleTitle = $(this).data("name");
+    var thisButton = $(this);
     // commentId = parseInt(commentId);
     $.ajax({
       method: "DELETE",
       url: "/comments/delete/" + commentId,
-    }).done();
+    }).done(function(data) {
+        console.log("delete button", thisButton.parent());
+        thisButton.parent().empty().removeClass('comment-text');
+
+    });
   });
 
   //submit comments
@@ -104,12 +113,12 @@ $(document).ready(function() {
 
   //selector for navbar links to change background
   $('.a-latest').on('click', function(){
-    $('.a-archive').removeClass('active-nav');
-    $('a-latest').addClass('active-nav');
+
+    $('a-latest').addClass('active');
   });
   $('.a-archive').on('click', function(){
-    $('.a-latest').removeClass('active-nav');
-    $('a-archive').addClass('active-nav');
+    $('.a-latest').removeClass('active');
+    $('a-archive').addClass('active');
   });
 //end doc ready
 });
