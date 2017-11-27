@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  navbar();
+
   //on click for toggling the comment section per each article
   $(".comment-section").hide();
   $(document).on('click', '.view-comments', function() {
@@ -116,14 +118,17 @@ $(document).ready(function() {
     $(cbName).val('');
 	});
 
-  //selector for navbar links to change background
-  $('.a-latest').on('click', function(){
+  function navbar() {
+    console.log("navbar called");
+    //selector for navbar links to change background
+    if (window.location.origin === "/") {
+      $('.a-latest').css("background","yellow")
+    }
 
-    $('a-latest').addClass('active');
-  });
-  $('.a-archive').on('click', function(){
-    $('.a-latest').removeClass('active');
-    $('a-archive').addClass('active');
-  });
+    if (window.location.href === "/archive") {
+      $('.a-archive').css("background", "yellow");
+    };
+  }
+
 //end doc ready
 });

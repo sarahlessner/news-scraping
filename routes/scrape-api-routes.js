@@ -25,6 +25,8 @@ module.exports = function(app) {
                 return;
 
               // save article info to result object
+              result.latest = "active-page";
+              result.archive = "active-page";
               result.title = trimTitle;
               result.link = getLink;
               result.summary = $(element).find($(".lede__kicker")).text();
@@ -67,31 +69,23 @@ module.exports = function(app) {
     Articles.find({}).sort({"createdAt": -1})
     .exec(function(error, results) {
     // Log any errors
-    if (error) {
-      // console.log(error);
-    }
-    // Or send the doc to the browser as a json object
-    else {
-          console.log(results.length);
-          for(var i = 0; i < results.length; i++) {
-            if(i%52 === 0) {
-              console.log(results[i]);
-            }
-            results[i]["idnum"] = i;
-
-          }
-
-          var hbsObject = {
-            articles: results
-          };
-          res.render("index", hbsObject);
-    }
+      if (error) {
+        // console.log(error);
+      }
+      // Or send the doc to the browser as a json object
+      else {
+        console.log(results.length);
+        for(var i = 0; i < results.length; i++) {
+          results[i]["idnum"] = i;
+        }
+        var hbsObject = {
+          articles: results
+        };
+        res.render("index", hbsObject);
+      }
     });
-
   //app.get end
   });
-
-
 
   //post comments
 
@@ -108,10 +102,7 @@ module.exports = function(app) {
       else {
         console.log("COMMENTS NEW DOC", doc._id);
         // Use the article id to find and update it's note
-        // console.log("REQ>PRARAMS>TITLE", req.params.title);
         Articles.findOneAndUpdate({"title": req.params.title }, { $push: { "comments": doc._id } }, { new: true })
-        // Articles.findOne({"_id": "59b5e55af01d31e8d4b18747" })
-
         .exec(function(err, newdoc) {
         // Send any errors to the browser
         if (err) {
